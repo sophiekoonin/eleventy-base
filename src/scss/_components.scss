@@ -1,0 +1,17 @@
+.text-and-image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  img {
+    flex-grow: 1;
+    flex-basis: 33%;
+    max-width: min(18rem, 100%);
+  }
+
+  .text {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+    <link rel="icon" type="image/png" href="{{ ['/images/favicons/', choir, '/favicon.ico'] | join | url }}">
+    <link rel="shortcut icon" href="{{ ['/images/favicons/', choir, '/favicon.ico' ] | join | url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ ['/images/favicons/', choir, '/apple-touch-icon.png' ] | join | url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ ['/images/favicons/', choir, '/favicon-32x32.png'] | join | url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ ['/images/favicons/', choir, '/favicon-16x16.png'] | join | url }}">
+    <link rel="manifest" href="{{ ['/images/favicons/', choir, '/site.webmanifest' ] | join | url }}">
+    <link rel="mask-icon" href="{{ ['/images/favicons/', choir, '/safari-pinned-tab.svg" color="#f47878' ] | join | url }}">
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper" class="wrapper">
+      <header id="header">
+        <img src="{{ logo }}" alt=""/>
+        <h1>
+          {{ title }}
+        </h1>
+        <nav></header>
+        <!-- Menu -->
+        <nav id="menu">
+          <div class="inner">
+            <h2>Menu</h2>
+            <ul class="links">
+              {% for item in menu %}
+                <li>
+                  <a href="#{{ item.slug }}">{{ item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+            <a href="#" class="close">Close</a>
+          </div>
+        </nav>
+        <div class="content">
+          {{ content | safe }}
+        </div>
+      </body>
+    </body>
+  </body>
+</html></body></html>

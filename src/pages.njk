@@ -1,0 +1,28 @@
+---
+pagination:
+    data: contentful-page
+    size: 1
+    alias: pg
+    addAllPagesToCollections: true
+permalink: "{{ pg.pageSlug | slug }}/"
+tags: "page"
+layout: layout.njk
+eleventyComputed:
+  title: "{{ pg.heading}}"
+  description: "{{ pg.pageDescription }}"
+  choir: "{{ pg.choir }}"
+  logo: "{{ pg.logo.fields.file.url }}"
+---
+
+
+  {%- for contentItem in pg.pageContent.content -%}
+  {% if contentItem.nodeType == "paragraph" %}
+      <section class="plain-text">
+      <p>{{ contentItem.content[0].value }}</p>
+      </section>
+      {% elif contentItem.data.target.sys.contentType.sys.id == "contentBlock" %}
+        {% contentBlock contentItem %}
+      {% elif contentItem.data.target.sys.contentType.sys.id == "textAndImageBlock" %}
+          {% textAndImageBlock contentItem %}
+      {% endif %}
+  {% endfor %}

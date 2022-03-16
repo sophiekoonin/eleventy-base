@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "@11ty/eleventy": "1.0.0",
-    "autoprefixer": "^10.4.2",
+    "@contentful/rich-text-html-renderer": "15.11.1",
+    "autoprefixer": "^10.4.4",
     "concurrently": "7.0.0",
-    "postcss": "^8.4.8",
+    "contentful": "9.1.14",
+    "marked": "4.0.12",
+    "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
     "sass": "1.49.9"
   },
