@@ -11,6 +11,7 @@ const client = contentful.createClient({
 
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 const shortcodes = require('./src/shortcodes');
+const { kebabCase, sentenceCase } = require('./src/filters');
 
 module.exports = (config) => {
   config.addWatchTarget('./src');
@@ -18,6 +19,8 @@ module.exports = (config) => {
 
   config.addPassthroughCopy({ './src/static': '/' });
 
+  config.addNunjucksFilter('kebabCase', kebabCase);
+  config.addNunjucksFilter('sentenceCase', sentenceCase);
   // Tell 11ty to use the .eleventyignore and ignore our .gitignore file
   config.setUseGitIgnore(false);
 
@@ -26,9 +29,8 @@ module.exports = (config) => {
   config.addShortcode('marked', marked);
   config.addShortcode('contentBlock', shortcodes.contentBlock);
   config.addShortcode('paragraphBlock', shortcodes.paragraphBlock);
-
   config.addShortcode('textAndImageBlock', shortcodes.textAndImageBlock);
-
+  config.addShortcode('socialMenu', shortcodes.socialMenu);
   return {
     dir: {
       input: 'src',

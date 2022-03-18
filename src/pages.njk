@@ -11,11 +11,8 @@ eleventyComputed:
   title: "{{ pg.heading}}"
   subheading: "{{ pg.subheading }}"
   description: "{{ pg.pageDescription }}"
-  choir: "{{ pg.choir }}"
   logo: "{{ pg.logo.fields.file.url }}"
 ---
-
-
   {%- for contentItem in pg.pageContent.content -%}
   {% if contentItem.nodeType == "paragraph" and contentItem.content[0].value != "" %}
       {% paragraphBlock contentItem %}

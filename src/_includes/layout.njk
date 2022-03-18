@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ title }}</title>
+    <title>SHE Choir {{ choir | sentenceCase }}</title>
     <meta name="description" content="{{ description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
@@ -28,12 +28,13 @@
               {% endfor %}
             </ul>
           </nav>
+          {% socialMenu social %}
         </dropdown-menu>
       </header>
-      <div class="content-wrapper">
+      <main class="content-wrapper">
         {% if subheading %}
           <h1>
-            {{ title | safe }}:<br/>
+            {{ title | safe }}<br/>
             <span class="subheading">{{ subheading | safe }}</span>
           </h1>
         {% else %}
@@ -45,7 +46,13 @@
           {{ content | safe }}
         </div>
       </div>
-    </div>
+    </main>
+    <footer>
+      <p class="copyright p">
+        © {{ year }} SHE Choir {{ choir | sentenceCase }}. Part of the
+        <a href="/">SHE Choir Network</a>
+      </p>
+    </footer>
     <script src="/js/menu.js" type="module" defer></script>
   </body>
 </html>

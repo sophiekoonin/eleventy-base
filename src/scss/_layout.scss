@@ -9,7 +9,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem clamp(0.5rem, 5%, 1.5rem);
+  margin-bottom: 1rem;
   img {
     max-width: min(5rem, 15vw);
   }
@@ -41,7 +41,11 @@ header {
     }
 
     & > * + * {
-      margin-block-start: clamp(1.5rem, 20vh, 5rem);
+      margin-block-start: clamp(1.5rem, 3em, 3.5rem);
     }
   }
+}
+
+footer {
+  text-align: center;
 }

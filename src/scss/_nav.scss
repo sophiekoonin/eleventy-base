@@ -2,6 +2,18 @@ dropdown-menu {
   margin-left: auto;
 }
 
+.social-menu {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
+
+  & > * {
+    margin: 0 0.5rem;
+  }
+}
+
 .navigation {
   ul {
     display: flex;
@@ -33,10 +45,11 @@ dropdown-menu {
 
 .dropdown-menu[enabled='true'] {
   .navigation {
+    margin-block-end: 2rem;
     ul {
       display: block;
       & > * + * {
-        margin-top: 2rem;
+        margin-block-start: 2rem;
       }
     }
 
@@ -44,12 +57,16 @@ dropdown-menu {
       font-size: 1.5rem;
     }
   }
+  .social-menu {
+    justify-content: flex-start;
+  }
 
   .dropdown-menu-trigger {
     display: block;
-    width: 2rem;
-    height: 2rem; /* Nice big tap target */
+    text-transform: uppercase;
+    color: var(--body-color);
     position: relative;
+    font-weight: 600;
     z-index: 1;
     background: transparent;
     border: none;
@@ -64,7 +81,7 @@ dropdown-menu {
     height: 100%;
     visibility: hidden;
     opacity: 0;
-    background: white;
+    background: var(--bg-color);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
