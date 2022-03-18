@@ -10,14 +10,11 @@ const client = contentful.createClient({
 });
 
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
-const {
-  textAndImageBlock,
-  contentBlock,
-  imageProcessing,
-} = require('./src/shortcodes');
+const shortcodes = require('./src/shortcodes');
 
 module.exports = (config) => {
   config.addWatchTarget('./src');
+  config.addWatchTarget('./src/shortcodes.js');
 
   config.addPassthroughCopy({ './src/static': '/' });
 
@@ -25,11 +22,12 @@ module.exports = (config) => {
   config.setUseGitIgnore(false);
 
   config.addShortcode('documentToHtmlString', documentToHtmlString);
-  config.addShortcode('imageProcessing', imageProcessing);
+  config.addShortcode('imageProcessing', shortcodes.imageProcessing);
   config.addShortcode('marked', marked);
-  config.addShortcode('contentBlock', contentBlock);
+  config.addShortcode('contentBlock', shortcodes.contentBlock);
+  config.addShortcode('paragraphBlock', shortcodes.paragraphBlock);
 
-  config.addShortcode('textAndImageBlock', textAndImageBlock);
+  config.addShortcode('textAndImageBlock', shortcodes.textAndImageBlock);
 
   return {
     dir: {

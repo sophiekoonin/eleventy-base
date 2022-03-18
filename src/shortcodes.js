@@ -14,48 +14,55 @@ function imageProcessing(photo) {
 }
 
 module.exports = {
+  paragraphBlock: function (item) {
+    return `<section class="paragraph-block"><p class="prose">${documentToHtmlString(
+      item
+    )}</p></section>`;
+  },
   contentBlock: function ({ data }) {
     const contentBlock = data.target;
     return `
                 <section class="content-block prose" id="${kebabCase(
                   contentBlock.fields.heading
                 )}">
-                            <h2 class="major">${
+                            <h2 class="block-heading">${
                               contentBlock.fields.heading
                             }</h2>
+                            <div class="content-block-content prose p" data-color-reverse>
                             ${documentToHtmlString(contentBlock.fields.content)}
+                            </div>
                 </section>`;
   },
   textAndImageBlock: function ({ data }) {
     const textAndImageBlock = data.target;
-    if (textAndImageBlock.fields.imageSide) {
-      return `
+    const imageBlock = imageProcessing(textAndImageBlock.fields.image);
+    const textBlock = `<div class="text-block prose">
+<div class="text shadow p" data-color-reverse>
+    ${documentToHtmlString(textAndImageBlock.fields.bodyText)}
+</div></div>`;
+
+    const content =
+      textAndImageBlock.fields.imageSide === 'left'
+        ? `
+      ${imageBlock}
+      ${textBlock}
+     `
+        : ` 
+     ${textBlock}
+     ${imageBlock}
+     `;
+
+    return `
       <section id="${kebabCase(
         textAndImageBlock.fields.heading
       )}" class="text-and-image">
-      ${imageProcessing(textAndImageBlock.fields.image)}
-              <div class="text prose">
-                  <h2 class="major">${textAndImageBlock.fields.heading}</h2>
-                  ${documentToHtmlString(textAndImageBlock.fields.bodyText)}
-              </div>
+      <h2 class="block-heading" data-img-align="${
+        textAndImageBlock.fields.imageSide
+      }">${textAndImageBlock.fields.heading}</h2>
+      <div class="text-and-image-content">
+       ${content}
+        </div>
       </section>`;
-    } else {
-      return `
-                      <section id="${kebabCase(
-                        textAndImageBlock.fields.heading
-                      )}" class="text-and-image">
-                            
-                              <div class="text prose">
-                                  <h2 class="major">${
-                                    textAndImageBlock.fields.heading
-                                  }</h2>
-                                  ${documentToHtmlString(
-                                    textAndImageBlock.fields.bodyText
-                                  )}
-                              </div>
-                              ${imageProcessing(textAndImageBlock.fields.image)}
-                      </section>`;
-    }
   },
   imageProcessing,
 };

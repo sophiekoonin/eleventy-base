@@ -1,0 +1,14 @@
+:root {
+  --bg-color: white;
+  --accent-color: #1b998b;
+  --body-color: #1f1f1f;
+}
+
+[data-choir='london'] {
+  --bg-color: #17364f;
+  --link-color: #f8958c;
+  --accent-color: #f5685c;
+  --body-color: #fffdef;
+  --bg-reverse: #fffdef;
+  --body-reverse: #1f1f1f;
+}

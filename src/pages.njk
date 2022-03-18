@@ -9,6 +9,7 @@ tags: "page"
 layout: layout.njk
 eleventyComputed:
   title: "{{ pg.heading}}"
+  subheading: "{{ pg.subheading }}"
   description: "{{ pg.pageDescription }}"
   choir: "{{ pg.choir }}"
   logo: "{{ pg.logo.fields.file.url }}"
@@ -17,9 +18,7 @@ eleventyComputed:
 
   {%- for contentItem in pg.pageContent.content -%}
   {% if contentItem.nodeType == "paragraph" and contentItem.content[0].value != "" %}
-      <section class="plain-text">
-      <p>{{ contentItem.content[0].value }}</p>
-      </section>
+      {% paragraphBlock contentItem %}
       {% elif contentItem.data.target.sys.contentType.sys.id == "contentBlock" %}
         {% contentBlock contentItem %}
       {% elif contentItem.data.target.sys.contentType.sys.id == "textAndImageBlock" %}

@@ -13,26 +13,35 @@ header {
   img {
     max-width: min(5rem, 15vw);
   }
-  h1 {
-    line-height: 1.75rem;
-  }
 }
 
-.content {
+.content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
 
+  h1 {
+    text-align: center;
+    max-width: min(28ch, 100vw);
+    line-height: clamp(1.5rem, 3vw + 1.5rem, 3.5rem);
+    .subheading {
+      font-size: clamp(1.2rem, 3vw + 1rem, 3rem);
+    }
+  }
   & * {
     margin-block: 0;
   }
 
-  & * + * {
-    margin-block-start: var(--space, 1.5rem);
-  }
+  .content {
+    margin-block-start: 2rem;
 
-  & > * + * {
-    margin-block-start: clamp(1.5rem, 20vh, 5rem);
+    & * + * {
+      margin-block-start: var(--space, 1.5rem);
+    }
+
+    & > * + * {
+      margin-block-start: clamp(1.5rem, 20vh, 5rem);
+    }
   }
 }

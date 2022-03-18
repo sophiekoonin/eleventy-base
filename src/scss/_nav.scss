@@ -1,21 +1,30 @@
-.navigation ul {
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem 0.8rem;
-  padding: 0;
+dropdown-menu {
+  margin-left: auto;
 }
 
-.navigation li {
-  margin: 0.1rem;
-}
+.navigation {
+  ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.8rem;
+    padding: 0;
+  }
+  li {
+    margin: 0.1rem;
+  }
 
-.navigation a {
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: currentColor;
+  a {
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .dropdown-menu-trigger {

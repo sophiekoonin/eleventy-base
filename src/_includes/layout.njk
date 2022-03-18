@@ -14,13 +14,10 @@
     <link rel="manifest" href="{{ ['/images/favicons/', choir, '/site.webmanifest' ] | join | url }}">
     <link rel="mask-icon" href="{{ ['/images/favicons/', choir, '/safari-pinned-tab.svg" color="#f47878' ] | join | url }}">
   </head>
-  <body>
+  <body data-choir="{{ choir }}">
     <div id="page-wrapper" class="wrapper">
       <header id="header">
-        <img src="{{ logo }}" alt=""/>
-        <h1>
-          {{ title }}
-        </h1>
+        <img src="{{ logo }}" alt="SHE Choir {{ choir }} logo"/>
         <dropdown-menu max-width="600">
           <nav class="navigation" aria-label="primary">
             <ul>
@@ -33,8 +30,20 @@
           </nav>
         </dropdown-menu>
       </header>
-      <div class="content">
-        {{ content | safe }}
+      <div class="content-wrapper">
+        {% if subheading %}
+          <h1>
+            {{ title | safe }}:<br/>
+            <span class="subheading">{{ subheading | safe }}</span>
+          </h1>
+        {% else %}
+          <h1>
+            {{ title | safe }}
+          </h1>
+        {% endif %}
+        <div class="content">
+          {{ content | safe }}
+        </div>
       </div>
     </div>
     <script src="/js/menu.js" type="module" defer></script>

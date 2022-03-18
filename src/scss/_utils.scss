@@ -1,3 +1,19 @@
 .prose {
   max-width: 60ch;
 }
+
+.shadow {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+[data-color-reverse] {
+  background-color: var(--bg-reverse);
+  color: var(--body-reverse);
+  a {
+    color: var(--bg-color);
+  }
+}
+
+.p {
+  padding: clamp(0.5rem, 5%, 1.5rem);
+}
