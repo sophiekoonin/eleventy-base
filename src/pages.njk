@@ -16,7 +16,7 @@ eleventyComputed:
 
 
   {%- for contentItem in pg.pageContent.content -%}
-  {% if contentItem.nodeType == "paragraph" %}
+  {% if contentItem.nodeType == "paragraph" and contentItem.content[0].value != "" %}
       <section class="plain-text">
       <p>{{ contentItem.content[0].value }}</p>
       </section>

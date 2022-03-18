@@ -14,32 +14,29 @@
     <link rel="manifest" href="{{ ['/images/favicons/', choir, '/site.webmanifest' ] | join | url }}">
     <link rel="mask-icon" href="{{ ['/images/favicons/', choir, '/safari-pinned-tab.svg" color="#f47878' ] | join | url }}">
   </head>
-  <body class="is-preload">
+  <body>
     <div id="page-wrapper" class="wrapper">
       <header id="header">
         <img src="{{ logo }}" alt=""/>
         <h1>
           {{ title }}
         </h1>
-        <nav></header>
-        <!-- Menu -->
-        <nav id="menu">
-          <div class="inner">
-            <h2>Menu</h2>
-            <ul class="links">
+        <dropdown-menu max-width="600">
+          <nav class="navigation" aria-label="primary">
+            <ul>
               {% for item in menu %}
                 <li>
                   <a href="#{{ item.slug }}">{{ item.label }}</a>
                 </li>
               {% endfor %}
             </ul>
-            <a href="#" class="close">Close</a>
-          </div>
-        </nav>
-        <div class="content">
-          {{ content | safe }}
-        </div>
-      </body>
-    </body>
+          </nav>
+        </dropdown-menu>
+      </header>
+      <div class="content">
+        {{ content | safe }}
+      </div>
+    </div>
+    <script src="/js/menu.js" type="module" defer></script>
   </body>
-</html></body></html>
+</html>

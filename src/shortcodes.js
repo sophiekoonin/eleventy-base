@@ -17,7 +17,9 @@ module.exports = {
   contentBlock: function ({ data }) {
     const contentBlock = data.target;
     return `
-                <section id="${kebabCase(contentBlock.fields.heading)}">
+                <section class="content-block prose" id="${kebabCase(
+                  contentBlock.fields.heading
+                )}">
                             <h2 class="major">${
                               contentBlock.fields.heading
                             }</h2>
@@ -32,7 +34,7 @@ module.exports = {
         textAndImageBlock.fields.heading
       )}" class="text-and-image">
       ${imageProcessing(textAndImageBlock.fields.image)}
-              <div class="text">
+              <div class="text prose">
                   <h2 class="major">${textAndImageBlock.fields.heading}</h2>
                   ${documentToHtmlString(textAndImageBlock.fields.bodyText)}
               </div>
@@ -43,7 +45,7 @@ module.exports = {
                         textAndImageBlock.fields.heading
                       )}" class="text-and-image">
                             
-                              <div class="text">
+                              <div class="text prose">
                                   <h2 class="major">${
                                     textAndImageBlock.fields.heading
                                   }</h2>
