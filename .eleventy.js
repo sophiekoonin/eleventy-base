@@ -12,8 +12,6 @@ module.exports = (config) => {
   config.addFilter('w3DateFilter', w3DateFilter);
   config.addFilter('debug', debugFilter);
 
-  // Tell 11ty to use the .eleventyignore and ignore our .gitignore file
-  config.setUseGitIgnore(false);
   return {
     dir: {
       input: 'src',
